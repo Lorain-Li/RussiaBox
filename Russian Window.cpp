@@ -20,7 +20,9 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_PAINT()
 	ON_WM_CREATE()
 	ON_WM_RBUTTONDOWN()
+	ON_WM_RBUTTONDBLCLK()
 	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONDBLCLK()
 	ON_WM_MOUSEWHEEL()
 	ON_WM_TIMER()
 END_MESSAGE_MAP()
@@ -104,6 +106,20 @@ void CMainFrame::OnLButtonDown(UINT nFlags, CPoint point)
 		gamestate = gameing;
 	}
 }
+void CMainFrame::OnLButtonDblClk(UINT nFlags, CPoint point)
+{
+	int k = 2;
+	while (--k)
+	{
+		if (gamestate == gameing)
+		{
+			UnDrawBox();
+			tempbox.pos.x--;
+			if (!BoxOk()) tempbox.pos.x++;
+			DrawBox();
+		}
+	}
+}
 void CMainFrame::OnRButtonDown(UINT nFlags, CPoint point)
 {
 	if (gamestate == gameing)
@@ -113,7 +129,20 @@ void CMainFrame::OnRButtonDown(UINT nFlags, CPoint point)
 		if (!BoxOk()) tempbox.pos.x--;
 		DrawBox();
 	}
-
+}
+void CMainFrame::OnRButtonDblClk(UINT nFlags, CPoint point)
+{
+	int k = 2;
+	while (--k)
+	{
+		if (gamestate == gameing)
+		{
+			UnDrawBox();
+			tempbox.pos.x++;
+			if (!BoxOk()) tempbox.pos.x--;
+			DrawBox();
+		}
+	}
 }
 
 BOOL CMainFrame::OnMouseWheel(UINT nFlags, short zDelta, CPoint point)

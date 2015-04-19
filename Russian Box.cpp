@@ -78,8 +78,8 @@ void CMainFrame::NewBox()
 		nextbox.posin[3] = CPoint(-1, 1);
 		break;
 	case 6:
-		nextbox.posin[0] = CPoint(-1, -1);
-		nextbox.posin[1] = CPoint(1, -1);
+		nextbox.posin[0] = CPoint(1, -1);
+		nextbox.posin[1] = CPoint(1, 0);
 		nextbox.posin[2] = CPoint(0, 1);
 		nextbox.posin[3] = CPoint(0, 0);
 		break;
